@@ -1,0 +1,54 @@
+### Speaker Verification API
+
+## installation.
+    # tested on windows 10, ubuntu 20.04
+    # python = 3.8
+    # install python dependencies
+        $ pip install -r requirements.txt
+
+## run.
+    # set proper environment variables into .env file
+    $ python app.py or 
+    $ flask run
+
+## SV engine is based on GE2E loss
+## API is wrapped with flask restAPI.
+## SQLAlchemy is used for db management.
+
+## API guide.
+    # /enroll
+        method POST
+        request data: formData object with {
+            token: "gloryvoicefootprint"                # valid token to use API
+            name: "speaker name to enroll"              # speaker name to enroll
+            audio: audiofiles to enroll                 # multiple audio files of a user (16khz mono wav is best, but still others can work, 3~6 files sound good)
+        }
+        response data: Http response object with {
+            "status": "success/failed"                  # response status that shows weather enroll is success or not
+            "message": "message from the API server"    # error status in case status="failed"
+        }
+    # /verify
+        method POST
+        request data: formData object with {
+            token: "gloryvoicefootprint"                # valid token to use API
+            name: "speaker name to enroll"              # speaker name to verify
+            audio: audiofile to verify                  # single audio file to verify (16khz mono wav is best, but still others can work)
+        }
+        response data: Http response object with {
+            "status": "success/failed"                  # response status that shows weather verify is success or not
+            "message": "message from the API server"    # error status in case status="failed"
+            "result": "True/False"                      # verification result in case status="success"
+            "confidence": floating point value in range [0,1]   # similarity score of requested audio and user voice
+        }
+    # /remove
+        method POST
+        request data: formData object with {
+            token: "gloryvoicefootprint"                # valid token to use API
+            name: "speaker name to enroll"              # speaker name to remove
+        }
+        response data: Http response object with {
+            "status": "success/failed"                  # response status that shows weather verify is success or not
+            "message": "message from the API server"    # error status in case status="failed"
+        }
+
+

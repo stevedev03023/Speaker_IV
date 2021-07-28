@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block page_title %}Speaker Enroll/Verification Demo{% endblock %}
+{% block body %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+
+    <hr>
+    <input id="person_id" type="hidden" value = "{{ person_id }}">
+    <div class = "container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Enroll/Verify voices</h3>
+                <hr>
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name">
+                <hr>
+                <label for="person_name">Audio</label>
+                <input type="file" class="form-control" id="audio" name="audio" multiple>
+                <hr>
+                <button class="btn enroll">Enroll</button>
+                <button class="btn verify">Verify</button>
+            </div>
+        </div>
+    </div>
+  
+    <h3>Enrolled users</h3>
+    <div class = "container">
+        <div class="row">
+            <div class="col-lg-12">
+              <table class="table small">
+                <thead>
+                    <tr>
+                      <th>User ID</th>
+                      <th>Name</th>
+                      <th>Number of audios</th>
+                      <th>Action</th>
+                    </tr>
+                </thead>
+                {% for id, name, num_audio in users %}
+                  <tr>
+                    <th> {{ id }} </th>
+                    <td> {{ name }} </td>
+                    <td> {{ num_audio }} </td>
+                    <td> <button class="remove" id="{{ name }}">Remove</button></td>
+                  </tr>
+                {% endfor %}
+              </table>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+
+{% endblock %}

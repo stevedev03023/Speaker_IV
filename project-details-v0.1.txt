@@ -1,0 +1,27 @@
+1-Front end as web service
+Do it very simple for testing, once all good then we will change it to our frontend.
+
+2-Backend as web service with API, and frontend conecting to backend by API only
+Token base and secure.
+
+
+3-Each user has a profile, he start recording his master voice with words that code will provide "text+random code"
+like "I agree and accept to sign, code is A23" (this code will be generated automatically by the code)
+
+then it will be saved in db for reference and as master voice
+
+4-User will do another test, and code will do the compare and check if he is same person or not
+system will give same message text+code as well, and it will display the % of the results.
+
+5-need to use mysql db for all details
+
+6-Google bucket will be used for the files/voice files
+
+
+1: 150
+2: 200
+3&4: Engine & model: 500
+5&6: db & outer storage: 300
+
+viktor.belman@malinator.com
+qikqjumkoe6ttiNoUetu
